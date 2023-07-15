@@ -1,4 +1,4 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Controller, Get, UseGuards, Render } from '@nestjs/common';
 import { AppService } from './app.service';
 import { LocalAuthGuard } from './auth/guards/local-auth.guard';
 import { AuthenticatedGuard } from './auth/guards/Authenticated.guard';
@@ -8,8 +8,9 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
+  @Render('index')
   getHello(): string {
-    return this.appService.getHello();
+    return null;
   }
 
   @UseGuards(LocalAuthGuard)
